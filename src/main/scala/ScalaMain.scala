@@ -1,11 +1,11 @@
 import akka.actor.{ ActorSystem, Props }
 
-object Main {
+object ScalaMain {
   def main(args: Array[String]): Unit = {
     if (args.isEmpty) {
       println("Usage run <ticks>")
     } else {
-      ActorSystem("system").actorOf(Props[Clock], "clock") ! Clock.Start(args(0).toInt)
+      ActorSystem("system").actorOf(Props[ScalaClock], "clock") ! ScalaClock.Start(args(0).toLong)
     }
   }
 }

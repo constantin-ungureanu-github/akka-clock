@@ -3,8 +3,8 @@ import akka.actor.Actor.Receive
 import akka.event.LoggingAdapter
 import akka.actor.ActorLogging
 
-class Clock extends Actor with ActorLogging {
-  import Clock.{ Start, Stop, Tick, Ping, Pong }
+class ScalaClock extends Actor with ActorLogging {
+  import ScalaClock.{Start, Stop, Tick, Ping, Pong }
 
   private var step = 0L
   private var duration = 0L
@@ -19,9 +19,9 @@ class Clock extends Actor with ActorLogging {
     }
 
     case Stop => {
-      stopTime = System.currentTimeMillis()
+      stopTime = System.currentTimeMillis
       println("Finished after "+ (stopTime - startTime) +" milliseconds.")
-      context.system.shutdown()
+      context.system.shutdown
     }
 
     case Ping => {
@@ -43,7 +43,7 @@ class Clock extends Actor with ActorLogging {
   }
 }
 
-object Clock {
+object ScalaClock {
   case class Start(duration: Long)
   case object Stop
   case object Tick

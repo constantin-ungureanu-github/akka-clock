@@ -1,6 +1,7 @@
 name := "akka-clock"
 version := "1.0"
 scalaVersion := "2.11.7"
+compileOrder := CompileOrder.JavaThenScala
 EclipseKeys.withSource := true
 
 libraryDependencies ++= Seq(
@@ -8,4 +9,5 @@ libraryDependencies ++= Seq(
 )
 
 enablePlugins(JavaAppPackaging)
-mainClass in Compile := Some("Main")
+mainClass in Compile := Some("JavaMain")
+//mainClass in Compile := Some("ScalaMain")
