@@ -6,7 +6,6 @@ public class JavaClock extends UntypedActor {
     private Long step = 0l;
     private Long duration = 0l;
     private Long startTime = 0l;
-    private Long stopTime = 0l;
 
     @Override
     public void onReceive(Object message) throws Exception {
@@ -15,7 +14,7 @@ public class JavaClock extends UntypedActor {
             startTime = System.currentTimeMillis();
             getSender().tell(Ping.getInstance(), getSelf());
         } else if (message instanceof Stop) {
-            stopTime = System.currentTimeMillis();
+            Long stopTime = System.currentTimeMillis();
             System.out.println("Finished after " + (stopTime - startTime) + " milliseconds.");
             System.exit(0);
         } else if (message instanceof Ping) {
@@ -36,7 +35,7 @@ public class JavaClock extends UntypedActor {
     }
 
     public static final class Ping implements Serializable {
-        private static final long serialVersionUID = 5531177271424888266L;
+        private static final long serialVersionUID = 5592624326581846277L;
         private static final Ping instance = new Ping();
 
         private Ping() {
@@ -48,7 +47,7 @@ public class JavaClock extends UntypedActor {
     }
 
     public static final class Pong implements Serializable {
-        private static final long serialVersionUID = 6080438337105207187L;
+        private static final long serialVersionUID = -3249837482565376870L;
         private static final Pong instance = new Pong();
 
         private Pong() {
@@ -60,11 +59,11 @@ public class JavaClock extends UntypedActor {
     }
 
     public static final class Start implements Serializable {
-        private static final long serialVersionUID = -7862663889125155306L;
+        private static final long serialVersionUID = -5750159585853846166L;
         Long duration;
 
         Start(Long duration) {
-            this.duration = duration;
+            setDuration(duration);
         }
 
         public Long getDuration() {
@@ -77,7 +76,7 @@ public class JavaClock extends UntypedActor {
     }
 
     public static final class Stop implements Serializable {
-        private static final long serialVersionUID = 1195537540409043952L;
+        private static final long serialVersionUID = 5860804743274500349L;
         private static final Stop instance = new Stop();
 
         private Stop() {
@@ -89,7 +88,7 @@ public class JavaClock extends UntypedActor {
     }
 
     public static final class Tick implements Serializable {
-        private static final long serialVersionUID = -7976881343629301887L;
+        private static final long serialVersionUID = 3408513431293936766L;
         private static final Tick instance = new Tick();
 
         private Tick() {

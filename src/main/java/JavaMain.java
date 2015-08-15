@@ -2,7 +2,7 @@ import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
 
-public class JavaMain {
+class JavaMain {
     public static void main(String[] args) {
         if (args.length == 0) {
             System.out.println("Usage run <ticks>");
